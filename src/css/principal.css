@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Path: styles.css */
+
+/* GENERAL*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --rosa: #FF808B;
+    --rosaOscuro: #FE6673;
+    --attachment: fixed;
+    --colorStop-1: 60%;
+    --colorStop-2: calc(var(--colorStop-1) + 80px);
+    --attachment: fixed;
+    --degrees: 100deg;
+    --colorStop-1: 50%;
+    --colorStop-2: calc(var(--colorStop-1) + 100px);
+}
+
+body {
+    max-width: 1920px;
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #fff;
+    color: #282828;
+    background-image: linear-gradient(var(--degrees), transparent var(--colorStop-1), var(--rosaOscuro) var(--colorStop-1) var(--colorStop-2), var(--rosa) var(--colorStop-2)), radial-gradient(circle at 20% 70%,
+            rgb(239 208 234 / 0.9),
+            rgb(234 201 242 / 0.6),
+            rgb(231 238 197 / 0.6),
+            rgb(205 240 219 / 0.6),
+            rgb(231 237 245 / 0.6));
+    background-attachment: var(--attachment);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/*FIN GENERAL*/
+
+/*NAVBAR*/
+
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    transition: .3s;
+}
+
+.container:hover {
+    background: var(--rosaOscuro);
+    cursor: pointer;
+}
+
+.hamburger_icon {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#navbar {
+    display: none;
+}
+
+#navbar.active {
+    display: block;
+}
+
+.lateral {
+    height: 100vh;
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+}
+
+.lateral.active {
+    background-color: var(--rosa);
+    transition: 0.5s;
+}
+
+/*FIN NAVBAR*/
+
+
+/*SELECT GENERATION*/
+
+.gen_select {
+    position: absolute;
+    bottom: 0;
+    left: 150px;
+    display: flex;
+    gap: 12px;
+}
+
+.gen_select input {
+    position: relative;
+    width: 35px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: margin-right 0.2s ease-in-out, scale 0.2s ease-in-out;
+    transform-origin: center left;
+}
+
+.gen_select input::before,
+.gen_select input::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    aspect-ratio: 1;
+    border-radius: 100vw;
+    --gradient-3-versions: linear-gradient(120deg,
+            var(--color-version-1) 40%,
+            var(--color-version-2) 40% 60%,
+            var(--color-version-3) 60%);
+    --gradient-2-versions: linear-gradient(120deg,
+            var(--color-version-1) 50%,
+            var(--color-version-2) 50%);
+}
+
+.gen_select input:hover,
+.gen_select input:checked {
+    scale: 1.5;
+    margin-right: 20px;
+}
+
+.gen_select input:checked::after {
+    border: 5px solid transparent;
+    border-top: 2px solid #000000aa;
+    border-bottom: 2px solid #000000aa;
+    scale: 1.3;
+    animation: rotation 700ms cubic-bezier(0.82, 0.22, 0.49, 0.61) infinite;
+}
+
+@keyframes rotation {
+    to {
+        rotate: 360deg;
+    }
+}
+
+/* Gen 1 */
+#gen1::before {
+    --color-version-1: #e23a19;
+    --color-version-2: #e5c31a;
+    --color-version-3: #3971da;
+    background-image: var(--gradient-3-versions);
+}
+
+/* Gen 2 */
+#gen2::before {
+    --color-version-1: #f6c422;
+    --color-version-2: #6f55e3;
+    --color-version-3: #abb4c9;
+    background-image: var(--gradient-3-versions);
+}
+
+/* Gen 3 */
+#gen3::before {
+    --color-version-1: #e54830;
+    --color-version-2: #37dd2b;
+    --color-version-3: #0070b7;
+    background-image: var(--gradient-3-versions);
+}
+
+/* Gen 4 */
+#gen4::before {
+    --color-version-1: #97d7e3;
+    --color-version-2: #303336;
+    --color-version-3: #bd56b7;
+    background-image: var(--gradient-3-versions);
+}
+
+/* Gen 5 */
+#gen5::before {
+    --color-version-1: #f0f6f4;
+    --color-version-2: #272524;
+    background-image: var(--gradient-2-versions);
+}
+
+/* Gen 6 */
+#gen6::before {
+    --color-version-1: #f1a9c6;
+    --color-version-2: #221717;
+    background-image: var(--gradient-2-versions);
+}
+
+/* Gen 7 */
+#gen7::before {
+    --color-version-1: #ff9f31;
+    --color-version-2: #4f3f9e;
+    background-image: var(--gradient-2-versions);
+}
+
+/* Gen 8 */
+#gen8::before {
+    --color-version-1: #02acee;
+    --color-version-2: #ed0e65;
+    background-image: var(--gradient-2-versions);
+}
+
+/* Gen 9 */
+#gen9::before {
+    --color-version-1: #eb3b4f;
+    --color-version-2: #781984;
+    background-image: var(--gradient-2-versions);
+}
+
+/* Formes Alt */
+#alt_forms {
+    visibility: hidden;
+}
+
+#alt_forms::before {
+    background-image: radial-gradient(white 21%, black 21% 25%, transparent 25%),
+        linear-gradient(red 41%,
+            black 41% 44%,
+            white 44% 56%,
+            black 56% 59%,
+            white 59%);
+}
+
+/*FIN SELECT GENERATION*/
+
+/*POKEMON 3DMODEL*/
+
+.pokemon_model {
+    width: 50%;
+}
+
+.shiny_button {
+    position: absolute;
+    left: 80px;
+    top: 150px;
+    width: 5rem;
+    filter: drop-shadow(5px 5px 0 rgba(130, 217, 211, 0.408));
+    cursor: pointer;
+}
+
+
+.poke #myBtn {
+    background-color: #f04f17;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0.5rem;
+}
+
+.pokemon_3Dmodel {
+    position: absolute;
+    left: 160px;
+    top: 80px;
+    filter: drop-shadow(10px 10px 2px #39393951);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*FIN POKEMON 3DMODEL*/
+
+/*POKEMON LIST*/
+
+.pokedex {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pokemon_list {
+    min-width: 400px;
+    width: 100%;
+    max-width: 520px;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 10px 20px 0;
+    margin-right: 20px;
+}
+
+.pokemon_list::-webkit-scrollbar {
+    display: none;
+}
+
+.pokemon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0 10px 0 0;
+    color: black;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border-radius: 100vw;
+    cursor: pointer;
+}
+
+.pokemon:hover,
+.pokemon_active {
+    background-image: linear-gradient(115deg, #f04f17 45%, black 45%);
+    color: white;
+}
+
+.pokemon_active {
+    position: relative;
+}
+
+.pokemon_active .pokemon_sprite {
+    animation: pokemon_jump 0.24s ease-in-out 2;
+}
+
+@keyframes pokemon_jump {
+
+    from,
+    to {
+        translate: 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+}
+
+.pokemon_name {
+    padding: 0 0.5rem;
+}
+
+@keyframes rotate {
+    to {
+        rotate: 360deg;
+    }
+}
+
+.pokemon>div:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
+.pokemon_sprite {
+    width: 60px;
+    scale: 1.2;
+    transform-origin: bottom;
+    margin-inline: 10px;
+}
+
+.pokemon_num {
+    display: flex;
+}
+
+.pokemon_num_field {
+    margin-left: 0.5rem;
+}
+
+.pokeball {
+    --width: 25px;
+    width: var(--width);
+    height: var(--width);
+    aspect-ratio: 1;
+    display: flex;
+    animation-play-state: paused;
+}
+
+.pokemon_active .pokeball {
+    animation: rotate 1600ms infinite linear;
+    animation-play-state: running;
+}
+
+/*FIN POKEMON LIST*/
+
+@media screen and (max-width: 992px) {
+    .pokedex {
+        flex-direction: column;
+        height: calc(100vh - 46px);
+    }
+
+    .gen_select {
+        top: 20px;
+        right: 20px;
+        gap: 10px 25px;
+        bottom: initial;
+        left: initial;
+        flex-direction: column;
+    }
+
+    .gen_select input {
+        transform-origin: top center;
+        transition: margin-bottom 0.2s ease-in-out, scale 0.2s ease-in-out;
+    }
+
+    .gen_select input:hover {
+        z-index: 20;
+    }
+
+    .gen_select input:hover,
+    .gen_select input:checked {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+
+    .shiny_button {
+        width: 4rem;
+    }
+
+    div:has(.pokemon_3Dmodel) {
+        max-width: 475px;
+        padding: 0 20px;
+    }
+
+    .pokemon_list {
+        height: calc(100vh - 451px);
+        margin-inline: auto;
+        padding-right: 0;
+    }
+}
+
+.column {
+    flex: 1;
+    min-width: 20%;
+    max-width: 50%;
+}
+
+.full_width {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pokemon_info_box p {
+    margin-bottom: 10px;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 600px) {
+    .gen_select {
+        flex-wrap: wrap-reverse;
+        height: 255px;
+    }
+
+    .gen_select {
+        opacity: 0.5;
+        transition: all 0.3s;
+    }
+
+    .gen_select:hover {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    div:has(.pokemon_3Dmodel) {
+        max-width: 300px;
+    }
+
+    .pokemon_3Dmodel {
+        margin-top: 70px;
+    }
+
+    .pokedex {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .pokemon_list {
+        width: 100%;
+        min-width: initial;
+    }
+
+    .pokeball {
+        display: none;
+    }
+}
+
+
+.modal-content .pokemon-info {}
+
+/* Add the following code to the existing CSS file */
+
+.type-icon-bug {
+    border: 1px solid #84AC86;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #84AC86;
+    color: #fff;
+}
+
+.type-icon-dark {
+    border: 1px solid #5A5366;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #5A5366;
+    color: #fff;
+}
+
+.type-icon-dragon {
+    border: 1px solid #7666ED;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #7666ED;
+    color: #ffff;
+}
+
+.type-icon-electric {
+    border: 1px solid #decf00;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #ffee00c3;
+    color: #ffffff;
+}
+
+.type-icon-fairy {
+    border: 1px solid #D994D6;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #D994D6;
+    color: #ffff;
+}
+
+.type-icon-fighting {
+    border: 1px solid #AA3D00;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #AA3D00;
+    color: #ffbc95;
+}
+
+.type-icon-fire {
+    border: 1px solid #C01716;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #C01716;
+    color: #fccece;
+}
+
+.type-icon-flying {
+    border: 1px solid #01BAE6;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #0596bb;
+    color: #ffff;
+}
+
+.type-icon-ghost {
+    border: 1px solid #5F5FB2;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #5F5FB2;
+    color: #ffff;
+}
+
+.type-icon-grass {
+    border: 1px solid #4E9A4E;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #4E9A4E;
+    color: #ffff;
+}
+
+.type-icon-ground {
+    border: 1px solid #D9B54A;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #D9B54A;
+    color: #ffff;
+}
+
+.type-icon-ice {
+    border: 1px solid #6DD3F5;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #6DD3F5;
+    color: #ffff;
+}
+
+.type-icon-normal {
+    border: 1px solid #A8A77A;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #A8A77A;
+    color: #ffff;
+}
+
+.type-icon-poison {
+    border: 1px solid #A33EA1;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #A33EA1;
+    color: #ffff;
+}
+
+.type-icon-psychic {
+    border: 1px solid #F95587;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #F95587;
+    color: #ffff;
+}
+
+.type-icon-rock {
+    border: 1px solid #B6A136;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #B6A136;
+    color: #ffff;
+}
+
+.type-icon-steel {
+    border: 1px solid #B7B7CE;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #B7B7CE;
+    color: #ffff;
+}
+
+.type-icon-water {
+    border: 1px solid #4D90D5;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #4D90D5;
+    color: #ffff;
+}
+
+.evolution-chain {}
+
+.pokemon-info {
+    display: grid;
+    gap: 10px;
+}
+
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(1, 0.7fr);
+    font-size: 1rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.stats hr {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.stats .stat {
+    display: flex;
+    width: 100%;
+}
+
+.stat div {
+    width: 100%;
+    padding: 7px 0px 7px 0px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+}
+
+.stats meter {
+    width: 20%;
+    height: 1.5em;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    top: 8px;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: #23dd48be;
+}
+
+meter::-webkit-meter-suboptimum-value {
+    background-color: #fdc945e6;
+}
+
+meter::-webkit-meter-even-less-good-value {
+    background-color: #ff4545e2;
+}
+
+.stats meter::-webkit-meter-bar {
+    background-color: rgba(183, 183, 183, 0.3);
+    border: none;
+}

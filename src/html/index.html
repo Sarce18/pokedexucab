@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Establece la codificación de caracteres para el documento -->
+    <meta charset='UTF-8'>
+    <!-- Asegura la compatibilidad con Internet Explorer -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- Configura la visualización para dispositivos móviles y establece el zoom inicial -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <!-- Título de la página -->
+    <title>Pokemon</title>
+    <!-- Vincula la hoja de estilos principal -->
+    <link rel="stylesheet" href="../css/principal.css">
+    <!-- Carga el script de la Pokedex, con defer para que se ejecute después de que el documento se haya cargado completamente -->
+    <script src='../js/pokedex.js' defer></script>
+    <!-- Preconecta con Google Fonts para mejorar la carga de las fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importa las fuentes de Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Roboto+Slab:wght@500&display=swap"
+        rel="stylesheet">
+    <!-- Icono de la pestaña del navegador -->
+    <link rel="icon" href="../img/icon.png">
+</head>
+
+<body id="principal">
+    <!-- Contenedor de la barra de navegación -->
+    <div id="navbar_container"></div>
+    <main>
+        <!-- Sección principal de la Pokedex -->
+        <section class="pokedex">
+            <!-- Botón para alternar entre Pokémon normal y shiny -->
+            <div class="shiny_button">
+                <img src="../img/shiny-stars.png" alt="shiny">
+            </div>
+            <!-- Contenedor del modelo 3D del Pokémon -->
+            <div class="poke">
+                <div class="pokemon_3Dmodel">
+                    <img src="" class="pokemon_model">
+                    <button id="myBtn">Info</button>
+                </div>
+            </div>
+            <!-- Contenedor de la información del Pokémon -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="pokemon_info_container">
+                        <div class="pokemon_info_box">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Lista de Pokémon -->
+            <ul class="pokemon_list">
+            </ul>
+            <!-- Selector de generación de Pokémon -->
+            <form class="gen_select">
+                <!-- Botón de radio para seleccionar la primera generación, con un manejador de clics para cargar datos -->
+                <input type="radio" name="gen" id="gen1" value="1" checked onclick="getPokeData(1,151)">
+                <input type="radio" name="gen" id="gen2" value="2" onclick="getPokeData(152, 251)">
+                <input type="radio" name="gen" id="gen3" value="3" onclick="getPokeData(252, 386)">
+                <input type="radio" name="gen" id="gen4" value="4" onclick="getPokeData(387,493)">
+                <input type="radio" name="gen" id="gen5" value="5" onclick="getPokeData(494, 649)">
+                <input type="radio" name="gen" id="gen6" value="6" onclick="getPokeData(650, 721)">
+                <input type="radio" name="gen" id="gen7" value="7" onclick="getPokeData(722, 809)">
+                <input type="radio" name="gen" id="gen8" value="8" onclick="getPokeData(810, 905)">
+                <input type="radio" name="gen" id="gen9" value="9" onclick="getPokeData(906, 1025)">
+                <input type="radio" name="gen" id="alt_forms" value="0" onclick="getPokeData(10001, 10277)">
+            </form>
+        </section>
+    </main>
+    <script src="../js/loadnavbar.js"></script>
+</body>
+
+</html>
